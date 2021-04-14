@@ -3,11 +3,9 @@
 class ObjetoDoJogo
 {
 public:
-	ObjetoDoJogo();
-	~ObjetoDoJogo();
-	virtual void inicializar();
-	virtual void atualizar();
-	virtual void desenhar();	
+	virtual void inicializar() = 0;
+	virtual void atualizar() = 0;
+	virtual void desenhar() = 0;	
 	virtual void defineX(int x);
 	virtual void defineY(int y);
 protected:

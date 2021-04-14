@@ -4,11 +4,11 @@
 #include "Pagina.h"
 int main() {
 
-	ObjetoDoJogo* oj = new ObjetoDoJogo();
+	/*ObjetoDoJogo* oj = new ObjetoDoJogo();
 	oj->inicializar();
 	oj->desenhar();
 	oj->atualizar();
-	oj->desenhar();
+	oj->desenhar();*/
 
 	Jornal* journal = new Jornal();
 	journal->inicializar();
