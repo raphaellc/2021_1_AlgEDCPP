@@ -1,0 +1,3 @@
+primeiro_dado
+segundo_dado terceiro_dado
+quarto_dado
