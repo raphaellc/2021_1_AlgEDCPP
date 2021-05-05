@@ -25,15 +25,18 @@ int main() {
 	if (!pri_arq_leitura.is_open())
 		cout << "não abriu" << endl;
 	else {
-		pri_arq_leitura >> dado_lido;
-		cout << dado_lido << endl;
-		pri_arq_leitura >> dado_lido;
-		cout << dado_lido << endl;
-		pri_arq_leitura >> dado_lido;
-		cout << dado_lido << endl;
+		do  {
+			cout << pri_arq_leitura.tellg() << endl;
+			pri_arq_leitura >> dado_lido;
+			if (pri_arq_leitura.tellg() >= 0) {
+				cout << dado_lido << endl;
+				cout << pri_arq_leitura.tellg() << endl;
+				cout << pri_arq_leitura.gcount() << endl;
+			}
+		} while (!pri_arq_leitura.eof());
 	}
 	pri_arq_leitura.close();
-	cout << dado_lido << endl;
+	
 	
 	system("pause");
 	return 0;
