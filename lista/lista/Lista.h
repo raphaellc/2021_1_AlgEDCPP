@@ -14,7 +14,9 @@ public:
 	int tamanho();
 	bool estaVazia();
 private:
+	void inserirPessoa(No* no);
 	No* _inicio_da_lista, *_no_atual;
 	int _quantidade_elementos;
+	
 };
 

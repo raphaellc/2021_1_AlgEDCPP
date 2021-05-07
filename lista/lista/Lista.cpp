@@ -20,6 +20,7 @@ void Lista::inserirPessoa(Pessoa* novo_convidado)
 	}
 	else {
 		_no_atual->defineProximo(no);
+		no->defineAnterior(_no_atual);
 	}
 	_no_atual = no;
 	_quantidade_elementos++;
@@ -42,7 +43,6 @@ void Lista::removerPessoa() //Jonathan
 		}	
 		_quantidade_elementos--;
 	}
-	
 }
 
 Pessoa* Lista::obterUltimaPessoa()//Giulia e Samuel
@@ -50,26 +50,26 @@ Pessoa* Lista::obterUltimaPessoa()//Giulia e Samuel
 	if(!estaVazia())
 		return _no_atual->obtemDado(); 
 	return nullptr;
-
-	
-	
 }
 
 Pessoa* Lista::obterTodasPessoas()//igor
 {
+	Pessoa * vetor_pessoas = nullptr;
 	if(_quantidade_elementos == 0){
-		return nullptr;
+		return vetor_pessoas;
 	}
-	Pessoa* a;
-	a = new Pessoa[_quantidade_elementos];
-	No* n = _inicio_da_lista;
-	int i = 0;
-	for (i; i < _quantidade_elementos - 1; i++) {
-		a[i] = *n->obtemDado();
-		n = n->obtemProximo();
+	else {
+		vetor_pessoas = new Pessoa[_quantidade_elementos];
+		No* n = _inicio_da_lista;
+		int i = 0;
+		for (i; i < (_quantidade_elementos - 1); i++) {
+			vetor_pessoas[i] = *n->obtemDado();
+			n = n->obtemProximo();
+		}
+		vetor_pessoas[_quantidade_elementos - 1] = *(_no_atual->obtemDado());
+		return vetor_pessoas;
 	}
-	a[_quantidade_elementos - 1] = *_no_atual->obtemDado();
-	return a;
+	
 }
 
 bool Lista::verificaConvidado(std::string nome)
@@ -87,4 +87,19 @@ bool Lista::estaVazia()
 	if (_inicio_da_lista == nullptr) return true;
 	return false;
 	
+}
+
+void Lista::inserirPessoa(No* no)
+{
+	if (!estaVazia()) {
+		if (no->obtemProximo == nullptr) {
+			No* novo_no = new No;
+			novo_no->defineAnterior(no);
+			no->defineProximo(novo_no);
+			_no_atual = novo_no;
+					return;
+		}
+		inserirPessoa(no->obtemProximo());
+		
+	}
 }
